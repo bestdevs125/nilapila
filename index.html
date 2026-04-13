@@ -1,327 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NILA - THE METAPHORIC EYES | EID 2026</title>
+    <title>Choroi Pakhir Biography</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body, html {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background-color: #050505; /* Blackish background */
-            font-family: 'Verdana', sans-serif;
-            color: #fff;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&display=swap');
 
-        /* 1. Cinematic Background Layer (Galaxy & Sea Parallax Mix) */
-        .stage-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at bottom, #001f3f 0%, #000 100%);
-            z-index: 1;
-        }
-
-        /* Continuous Dynamic Energy Particle (Breathing Styles) */
-        .energy-particle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: rise 5s infinite ease-out;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        @keyframes rise {
-            0% { transform: translateY(110vh) scale(1); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(0); opacity: 0; }
-        }
-
-        /* 2. Central Portrait & Metaphoric eyes Loop (The "Nila Portal") */
-        .nila-loop-portal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 50;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            padding: 10px;
-            /* Multi-Color Solar Flare Border (Carrying by Demons Effect) */
-            background: linear-gradient(135deg, #00ffff, #ff00ff, #ffdf00);
-            box-shadow: 0 0 60px rgba(255, 255, 255, 0.4);
-            animation: portalGlow 3s infinite ease-in-out;
-            overflow: hidden; /* Important for the loop effect */
-        }
-
-        .loop-inner-container {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            position: relative;
-            background: #000;
-        }
-
-        .loop-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            transform: scale(1.05); /* Slight zoom for dramatic feel */
-            filter: contrast(1.1) brightness(1); /* Enhanced for 8k effect */
-        }
-
-        .loop-image.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        @keyframes portalGlow {
-            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); box-shadow: 0 0 50px #00ffff; }
-            50% { transform: translate(-50%, -52%) rotate(2deg); box-shadow: 0 0 90px #ff00ff; }
-        }
-
-        /* 3. Static Hashira Ladies (Vibrant & Animated At Bottom) */
-        .char-squad-container {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 60vh;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: flex-end;
-            z-index: 10;
-            padding-bottom: 20px;
-            pointer-events: none;
-        }
-
-        .char-img {
-            height: 90%;
-            filter: drop-shadow(0 0 10px magenta);
-            animation: characterFloat 4s infinite ease-in-out;
-        }
-
-        @keyframes characterFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* 4. Eid Wishes and "Good Lines" (Fire Glow Style) */
-        .wish-header {
-            position: absolute;
-            top: 10%;
-            width: 100%;
-            text-align: center;
-            z-index: 100;
-        }
-
-        .nila-title-text {
-            font-size: 7rem;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 20px;
+        * {
             margin: 0;
-            text-shadow: 0 0 10px #00ffff, 0 0 30px #ff00ff;
-            animation: textTitleGlow 3s infinite;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        @keyframes textTitleGlow {
-            0%, 100% { text-shadow: 0 0 10px #00ffff, 0 0 30px #ff00ff; }
-            50% { text-shadow: 0 0 20px #ff00ff, 0 0 60px #00ffff; }
+        body, html {
+            width: 100%;
+            min-height: 100vh;
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #fce4ec; /* Baby Pink Base */
+            overflow-x: hidden;
         }
 
-        .eid-mubarak-subtitle {
-            font-size: 3rem;
-            color: #ffdf00; /* Gold */
-            text-shadow: 2px 2px 10px #000;
-            margin-top: -10px;
-            letter-spacing: 5px;
-        }
-
-        .message-box {
-            position: absolute;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 20px;
-            border: 2px solid cyan;
-            text-align: center;
-            z-index: 100;
-            opacity: 0.9;
-        }
-
-        .scroll-text {
-            color: white;
-            font-size: 1.2rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        /* The Metaphoric Eyes Overlay - "Crying and Forgiving" */
-        #forgiving-eyes {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        /* --- Background Animation --- */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            z-index: 60;
-            pointer-events: none; /* Allows clicks to go through to other layers */
-            opacity: 0.7;
-            mix-blend-mode: screen; /* Integrates them dramatically */
-            animation: eyesFade 3s infinite ease-in-out;
+            z-index: -1;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            overflow: hidden;
         }
 
-        .metaphoric-eye {
+        /* Floating Circles in Background */
+        .circle {
             position: absolute;
-            width: 80px;
-            height: 80px;
             background: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
-            filter: blur(10px);
-            box-shadow: 0 0 30px cyan, 0 0 50px magenta;
+            bottom: -100px;
+            animation: float 15s infinite ease-in;
         }
 
-        #eye-left { top: 35%; left: 35%; }
-        #eye-right { top: 35%; right: 35%; }
-
-        @keyframes eyesFade {
-            0%, 100% { opacity: 0.5; filter: blur(10px) drop-shadow(0 0 10px cyan); }
-            50% { opacity: 0.9; filter: blur(5px) drop-shadow(0 0 30px magenta); }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Enter Button for Sound/VFX Trigger */
-        #gatekeeper {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 999;
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; color: white; cursor: pointer; text-align: center;
+        /* --- GIF Placement (Left & Right) --- */
+        .swing-gif {
+            position: fixed;
+            top: 15%;
+            transform: translateY(-50%);
+             /* GIF এর সাইজ */
+            z-index: 5;
+            pointer-events: none;
         }
 
-        .sword-icon {
-            width: 100px;
-            margin-bottom: 20px;
-            animation: spin 3s infinite linear;
+        .gif-left { left: 20px; }
+        .gif-right { right: 20px; transform: translateY(-50%) scaleX(-1); } /* ডান দিকেরটা ঘুরিয়ে দেওয়া হয়েছে */
+
+        /* --- Main Content Area --- */
+        .content-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 60px 0; /* উপরে নিচে প্যাডিং */
+            position: relative;
+            z-index: 10;
         }
 
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .text-box {
+            width: 75%; /* আগের মতো চওড়া উইডথ */
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.85); /* হালকা সাদা স্বচ্ছ ভাব */
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            line-height: 2.2;
+            text-align: justify;
+            border: 2px solid #f8bbd0;
+        }
+
+        h1 {
+            color: #d81b60;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.4rem;
+            color: #444;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        strong {
+            color: #d81b60;
+            font-weight: 700;
+        }
+
+        /* --- Audio Button --- */
+        .audio-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #d81b60;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
+        }
     </style>
 </head>
 <body>
 
-    <div id="gatekeeper" onclick="activateExperience()">
-        <img src="https://cdn-icons-png.flaticon.com/512/1065/1065505.png" class="sword-icon" alt="Nichirin Blade">
-        <h2>CLICK TO ACTIVATE NILA'S WORLD</h2>
-        <p>(Demon Slayer for you)</p>
-    </div>
+    <div class="background-animation" id="bg-anim"></div>
 
-    <div class="stage-bg"></div>
+ 
+    
+    <img src="nila.gif" class="swing-gif gif-right" alt="Swing Right">
 
-    <div id="forgiving-eyes">
-        <div class="metaphoric-eye" id="eye-left"></div>
-        <div class="metaphoric-eye" id="eye-right"></div>
-    </div>
-
-    <div id="particle-field"></div>
-
-    <div class="wish-header">
-        <h1 class="nila-title-text">NILA</h1>
-        <div class="eid-mubarak-subtitle">EID MUBARAK</div>
-    </div>
-
-    <div class="nila-loop-portal">
-        <div class="loop-inner-container">
-            <img src="image_0.png" class="loop-image active" alt="Nila Portrait" style="filter: sepia(1) hue-rotate(-20deg) contrast(1.1);" id="nila-main-photo">
+    <div class="content-wrapper">
+        <div class="text-box">
+            <h1>স্বপ্ন ও একটি চড়ুই পাখির বায়োগ্রাফি</h1>
             
-            <img src="1.png" class="loop-image" alt="Anime Character 1">
-            
-            <img src="2.jpg" class="loop-image" alt="Anime Character 2">
-            
-            <img src="3.png" class="loop-image" alt="Anime Character 3">
+            <p>নীলা জানে? মাঝে মাঝে আমি অত্যন্ত ক্রিয়েটিভ হয়ে উঠি, মনে হয় এসব চিন্তা আমার না, কেউ এসে আমাকে দিয়ে যায়। এখন রাত ৩টা বাজে, ঘুম ভাঙলো স্বপ্ন দেখে। স্বপ্নে দেখলাম আমার সুন্দরী বড় দুধওয়ালী টিচার আমাকে জিজ্ঞেস করছে, 'হেই, বলো তোমার জীবনের উদ্দেশ্য কী?'</p>
+
+            <p>আমি বললাম, 'আমি একটি <strong>চড়ুই পাখির জীবনী</strong> লিখব। আমার বড় একটা শিপ থাকবে, সেই শিপে আমি একা, কোনো ডিজিটাল ডিভাইস থাকবে না; থাকবে সাদা কাগজ আর কলম। আমি লিখব, কাগজ ভরে উঠবে একটি চড়ুই পাখির বায়োগ্রাফিতে। তার সুখ, দুঃখ, একাকীত্ব, আনন্দ মুহূর্ত আর তার স্বপ্নগুলো থাকবে তাতে।'</p>
+
+            <p>আমার শিপে পর্যাপ্ত মজুদ থাকা অবস্থায় আমার স্বাভাবিক মৃত্যু হবে,কিন্তু আমার শিপ বয়ে যাবে অনন্তের দিকে— যতদিন এই পৃথিবীতে দিন আর রাত হবে। মৃত্যুর সাথে সাথে শুরু হবে প্রচণ্ড বৃষ্টি। তোমাদের দেশের মতো গ্যাস্ট্রিকে আক্রান্ত রোগা বৃষ্টি না, ঝুম বাংলা বৃষ্টি। আমার শরীর ভিজিয়ে দিবে, আমি মারা গেছি ঠিকই কিন্তু এই বৃষ্টিতে আমি আনন্দিত হবো। আমার সুখ অনুভব হবে, কারণ বেঁচে থাকতে আমি বৃষ্টিতে ভিজতে পারতাম না, আমার জ্বর আসতো।</p>
+
+            <p>আমার সবচেয়ে সুখময় স্মৃতি হচ্ছে আমি আর আম্মু ঝুম বৃষ্টিতে ভিজছি, দুজন হাসছি; কিন্তু কেন হাসছি আমরা জানি না। সেদিন ঐ শিপে বৃষ্টিতে আমি ভিজব, মৃত মানুষ হাসতে পারলে হয়তো হাসব। আমার নাপাক শরীর ধুয়ে দিয়ে যাবে। সাদা কাগজে লেখা চড়ুই পাখির বায়োগ্রাফিটাও ধুয়ে নিয়ে যাক, চিন্তাগুলো না ধুলেই হলো।</p>
+
+            <p>আমার ভাবতে ভালো লাগে বড় দুধওয়ালী টিচার পুরো শরীর দুলিয়ে খিলখিল করে হাসছে, আমার দৃষ্টি তার বুকের দিকে। থাকুক কিছু চিন্তা। পৃথিবীতে সবার শুদ্ধ মানুষ হওয়ার দরকার নেই।</p>
         </div>
     </div>
 
-    <div class="char-squad-container">
-        <img src="nila.png" class="char-img" style="filter: drop-shadow(0 0 10px #ff69b4);margin-top:-100px!important;">
-        <img src="https://www.pngmart.com/files/13/Anime-Girl-PNG-Photos.png" class="char-img" style="filter: drop-shadow(0 0 10px #bc13fe);">
-    </div>
+   
 
-    <div class="message-box">
-        <p class="scroll-text">
-            "Your smile is the brightest breathing style of all. Just as a Demon Slayer fights for a beautiful tomorrow, may this Eid fill your life with unending light, strength, and vibrant joy. Eid Mubarak, Nila."
-        </p>
-    </div>
-
-    <audio id="bg-audio" loop>
-        <source src="https://files.catbox.moe/88sxp4.mp3" type="audio/mpeg">
-    </audio>
+    <button class="audio-control" onclick="toggleAudio()"></button>
 
     <script>
-        function activateExperience() {
-            document.getElementById('gatekeeper').style.display = 'none';
-            
-            // Fixed Audio Reference
-            var audio = document.getElementById('bg-audio');
-            audio.play().catch(function(error) {
-                console.log("Autoplay blocked or link issue: ", error);
-            });
-            
-            document.body.style.animation = "shake 0.5s";
-            createBreathingParticles();
-            startCharacterLoop();
+        // ব্যাকগ্রাউন্ডে বুদবুদ তৈরির স্ক্রিপ্ট
+        const bg = document.getElementById('bg-anim');
+        for (let i = 0; i < 15; i++) {
+            const circle = document.createElement('div');
+            circle.classList.add('circle');
+            const size = Math.random() * 60 + 20 + 'px';
+            circle.style.width = size;
+            circle.style.height = size;
+            circle.style.left = Math.random() * 100 + 'vw';
+            circle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            circle.style.animationDelay = Math.random() * 5 + 's';
+            bg.appendChild(circle);
         }
 
-        function createBreathingParticles() {
-            const container = document.getElementById('particle-field');
-            const colors = ['#00ffff', '#ff00ff', '#ffdf00', '#ff69b4'];
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'energy-particle';
-                const size = Math.random() * 8 + 4;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(particle);
+        function toggleAudio() {
+            var audio = document.getElementById("natureAudio");
+            var btn = document.querySelector(".audio-control");
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = "শব্দ বন্ধ করুন";
+            } else {
+                audio.pause();
+                btn.innerHTML = "পাখির ডাক শুনুন";
             }
         }
-
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.loop-image');
-        const loopInterval = 4000;
-
-        function startCharacterLoop() {
-            setInterval(() => {
-                images[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add('active');
-            }, loopInterval);
-        }
     </script>
-    
-    <style>
-        @keyframes shake {
-            0% { transform: translate(1px, 1px); }
-            10% { transform: translate(-1px, -2px); }
-            30% { transform: translate(3px, 2px); }
-            50% { transform: translate(-1px, 2px); }
-            70% { transform: translate(3px, 0px); }
-            100% { transform: translate(0px, 0px); }
-        }
-    </style>
+
 </body>
 </html>

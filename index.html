@@ -140,6 +140,142 @@
             <p>আমার সবচেয়ে সুখময় স্মৃতি হচ্ছে আমি আর আম্মু ঝুম বৃষ্টিতে ভিজছি, দুজন হাসছি; কিন্তু কেন হাসছি আমরা জানি না। সেদিন ঐ শিপে বৃষ্টিতে আমি ভিজব, মৃত মানুষ হাসতে পারলে হয়তো হাসব। আমার নাপাক শরীর ধুয়ে দিয়ে যাবে। সাদা কাগজে লেখা চড়ুই পাখির বায়োগ্রাফিটাও ধুয়ে নিয়ে যাক, চিন্তাগুলো না ধুলেই হলো।</p>
 
             <p>আমার ভাবতে ভালো লাগে বড় দুধওয়ালী টিচার পুরো শরীর দুলিয়ে খিলখিল করে হাসছে, আমার দৃষ্টি তার বুকের দিকে। থাকুক কিছু চিন্তা। পৃথিবীতে সবার শুদ্ধ মানুষ হওয়ার দরকার নেই।</p>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Hundred Miles</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The Video Background */
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        /* Cinematic Vignette */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.7) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Initial "Tap to Unmute" Layer */
+        #interaction-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            transition: opacity 1s ease;
+            cursor: pointer;
+        }
+
+        .pulse-text {
+            color: white;
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="interaction-layer">
+        <div class="pulse-text">Tap to Enter the Journey</div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <video id="bg-video" loop playsinline>
+        <source src="AQOzj99Edfx9xWRyv0fK1deOrgu7C0pIp3_68bEda92cKupTjQNh51SG-VdWIwdNgd3W0RGPbwEKDlVa2KDOCQXBIpcOqTC-Vs9dy1mS4ra3dw.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        const video = document.getElementById('bg-video');
+        const layer = document.getElementById('interaction-layer');
+
+        // Attempt to play immediately (muted)
+        window.addEventListener('load', () => {
+            video.muted = true;
+            video.play().catch(error => {
+                console.log("Autoplay waiting for interaction");
+            });
+        });
+
+        // When she taps, unmute and hide the overlay
+        document.body.addEventListener('click', () => {
+            video.muted = false;
+            video.play(); // Ensure it's playing
+            layer.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
         </div>
     </div>
 

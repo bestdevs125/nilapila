@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demon Slayer Unfold</title>
+    <style>
+        /* Reset and Full Screen setup */
+        * { box-sizing: border-box; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        /* Cover Page */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1), opacity 1s;
+        }
+
+        #overlay img {
+            width: 80%;
+            max-width: 500px;
+            filter: drop-shadow(0 0 15px #e63946);
+            margin-bottom: 30px;
+        }
+
+        #overlay p {
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            animation: breathe 2s infinite ease-in-out;
+        }
+
+        /* The Full Screen Video */
+        #video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This makes the video fill the whole screen */
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* Class to hide overlay */
+        .hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="overlay" onclick="unfold()">
+        <img src="me.png" alt="Demon Slayer">
+ <p>Jani eta kokhono tomar dekha hobe na. SEE YOU NEVER,MAYBE LATER.</p>
+        <p>TAP TO UNFOLD</p>
+    </div>
+
+    <div id="video-container">
+        <video id="myVideo" playsinline loop>
+            <source src="AQOzj99Edfx9xWRyv0fK1deOrgu7C0pIp3_68bEda92cKupTjQNh51SG-VdWIwdNgd3W0RGPbwEKDlVa2KDOCQXBIpcOqTC-Vs9dy1mS4ra3dw.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        function unfold() {
+            const overlay = document.getElementById('overlay');
+            const container = document.getElementById('video-container');
+            const video = document.getElementById('myVideo');
+
+            // 1. Hide the cover with animation
+            overlay.classList.add('hidden');
+            
+            // 2. Show container
+            container.style.display = 'block';
+
+            // 3. Attempt to go into Browser Fullscreen Mode
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+                document.documentElement.webkitRequestFullscreen();
+            }
+
+            // 4. Play with audio
+            video.muted = false;
+            video.play();
+        }
+    </script>
+
+</body>
+</html>

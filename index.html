@@ -1,124 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAVE A SWEET DREAM,BYE</title>
+    <title>Goru Hamba Bristi & A Letter! 🐄💖</title>
     <style>
-        /* Reset and Full Screen setup */
-        * { box-sizing: border-box; }
-        body, html {
+        /* Puro screenta dark-colorful gradient thakbe */
+        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
+            background: linear-gradient(135deg, #0f0c1b, #201335, #0b1e36);
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            width: 100vw;
         }
 
-        /* Cover Page */
+        /* --- LAYER 1: TAP TO SEE OVERLAY SCREEN --- */
         #overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            background: radial-gradient(circle, #1a102f, #05020a);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 100;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .enter-btn {
+            padding: 20px 40px;
+            font-size: 26px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff3333, #ffff33, #3333ff);
+            background-size: 300% 300%;
+            border: none;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1), opacity 1s;
+            box-shadow: 0 0 30px rgba(255, 255, 51, 0.5);
+            animation: glowShift 4s ease infinite;
+            color: white;
+            text-shadow: 1px 1px 3px black;
         }
 
-        #overlay img {
-            width: 80%;
-            max-width: 500px;
-            filter: drop-shadow(0 0 15px #e63946);
-            margin-bottom: 30px;
+        /* --- LAYER 2: MAIN GORU RAIN CONTAINER --- */
+        .rain-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: none; /* JavaScript diye active kora hobe */
         }
 
-        #overlay p {
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            animation: breathe 2s infinite ease-in-out;
-        }
-
-        /* The Full Screen Video */
-        #video-container {
-            position: absolute;
+        /* --- LAYER 3: COLORFUL LETTER BOX --- */
+        .letter-container {
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #1d0922, #3a1c42, #140517);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5000;
+            display: none; /* JavaScript diye active kora hobe */
+        }
+        .letter-box {
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 0 35px rgba(255, 0, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
         }
 
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* This makes the video fill the whole screen */
+        /* --- ACTION BUTTONS (Next/Back) --- */
+        .action-btn {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 35px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff007f, #ff00ff);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+            z-index: 2000;
+            transition: 0.3s ease;
+        }
+        .action-btn:hover {
+            box-shadow: 0 0 25px rgba(255, 0, 127, 1);
+            transform: translateX(-50%) scale(1.05);
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .back-btn:hover { color: white; }
+
+        /* --- TEXT & ANIMATION STYLES --- */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff0055, #ffcc00, #00ffcc, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glowShift 5s infinite linear;
+        }
+        .letter-text {
+            font-size: 22px;
+            line-height: 1.6;
+            font-weight: bold;
         }
 
-        @keyframes breathe {
-            0%, 100% { opacity: 0.3; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.05); }
+        /* Colorful Letters Glow */
+        .c1 { color: #ff3366; text-shadow: 0 0 10px #ff3366; }
+        .c2 { color: #33ccff; text-shadow: 0 0 10px #33ccff; }
+        .c3 { color: #ffff33; text-shadow: 0 0 10px #ffff33; }
+        .c4 { color: #33ff33; text-shadow: 0 0 10px #33ff33; }
+        .c5 { color: #ff33ff; text-shadow: 0 0 10px #ff33ff; }
+
+        /* Goru Drop Style */
+        .cow-drop {
+            position: absolute;
+            top: -100px;
+            font-size: 24px;
+            font-weight: bold;
+            white-space: nowrap;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+        .red { color: #ff3333; text-shadow: 0 0 15px #ff3333, 0 0 30px #ff3333; }
+        .yellow { color: #ffff33; text-shadow: 0 0 15px #ffff33, 0 0 30px #ffff33; }
+        .blue { color: #3333ff; text-shadow: 0 0 15px #3333ff, 0 0 30px #3333ff; }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        @keyframes glowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Class to hide overlay */
-        .hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
+        /* --- CSS MULTIPLIER FOR RAIN GHANATTA --- */
+        .cow-drop:nth-child(5n+1) { left: 5%; animation-duration: 3s; animation-delay: 0s; }
+        .cow-drop:nth-child(5n+2) { left: 15%; animation-duration: 2.5s; animation-delay: 1.5s; }
+        .cow-drop:nth-child(5n+3) { left: 25%; animation-duration: 3.5s; animation-delay: 0.5s; }
+        .cow-drop:nth-child(5n+4) { left: 35%; animation-duration: 2.8s; animation-delay: 2s; }
+        .cow-drop:nth-child(5n+5) { left: 45%; animation-duration: 3.2s; animation-delay: 1s; }
+        .cow-drop:nth-child(3n+1) { left: 55%; animation-duration: 2.7s; animation-delay: 0.2s; }
+        .cow-drop:nth-child(3n+2) { left: 65%; animation-duration: 3.4s; animation-delay: 1.8s; }
+        .cow-drop:nth-child(3n+3) { left: 75%; animation-duration: 2.3s; animation-delay: 0.8s; }
+        .cow-drop:nth-child(4n+1) { left: 85%; animation-duration: 3.1s; animation-delay: 1.2s; }
+        .cow-drop:nth-child(4n+2) { left: 95%; animation-duration: 2.6s; animation-delay: 0.4s; }
+        .cow-drop:nth-child(4n+3) { left: 12%; animation-duration: 3.3s; animation-delay: 2.2s; }
+        .cow-drop:nth-child(4n+4) { left: 48%; animation-duration: 2.9s; animation-delay: 1.7s; }
+        .cow-drop:nth-child(7n) { left: 20%; animation-duration: 4s; animation-delay: 0.3s; font-size: 30px; }
+        .cow-drop:nth-child(7n+2) { left: 40%; animation-duration: 2.2s; animation-delay: 1.1s; font-size: 18px; }
+        .cow-drop:nth-child(7n+4) { left: 60%; animation-duration: 3.7s; animation-delay: 2.5s; font-size: 28px; }
+        .cow-drop:nth-child(7n+6) { left: 80%; animation-duration: 2.4s; animation-delay: 0.7s; font-size: 20px; }
+body{overflow:hidden)
     </style>
 </head>
 <body>
 
-    <div id="overlay" onclick="unfold()">
-        <img src="me.png" alt="Demon Slayer">
- <p>Jani eta kokhono tomar dekha hobe na,tomar janala ta churi korar jonno dukkhito.. SEE YOU NEVER,MAYBE LATER.</p>
-        <p>TAP TO UNFOLD</p>
+    <div id="overlay">
+        <button class="enter-btn" onclick="startGoruRain()">🐄 Tap to See Hamba Rain! 🌧️</button>
     </div>
 
-    <div id="video-container">
-        <video id="myVideo" playsinline loop>
-            <source src="AQOzj99Edfx9xWRyv0fK1deOrgu7C0pIp3_68bEda92cKupTjQNh51SG-VdWIwdNgd3W0RGPbwEKDlVa2KDOCQXBIpcOqTC-Vs9dy1mS4ra3dw.mp4" type="video/mp4">
-        </video>
+    <div class="rain-container" id="rainContainer">
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop red">🐄 HAMBA<img src= "nila.gif"/></div>
+        <div class="cow-drop yellow">HAMBA 🐄<img src= "nila.gif"/></div>
+        <div class="cow-drop blue">🐄 HAMBA<img src= "nila.gif"/></div>
+
+        <button class="action-btn" onclick="showLetter()">Read My Letter 💖</button>
     </div>
+
+    <div class="letter-container" id="letterContainer">
+        <div class="letter-box">
+            <h1>💖 Hey Nila... 💖</h1>
+            <p class="letter-text">
+                                <span class="c1">Tumi</span> 
+                <span class="c2">amar</span> 
+                <span class="c3">jiboner</span> 
+                <span class="c4">shei</span> 
+                <span class="c5">shundor</span> 
+                <span class="c1">bristi,</span><br>
+                <span class="c2">jeta</span> 
+                <span class="c3">ashle</span> 
+                <span class="c4">amar</span> 
+                <span class="c5">moner</span> 
+                <span class="c1">shob</span> 
+                <span class="c2">goru</span> 
+                <span class="c3">ekshathe</span><br>
+                <span class="c4">"HAMBA"</span> 
+                <span class="c5">daak</span> 
+                <span class="c1">shuru</span> 
+                <span class="c2">kore!</span> 🐮✨
+
+
+
+                <span class="c2">KIN2</span> 
+                <span class="c3">SOBAI</span><br>
+                <span class="c4">"SHUNE"</span> 
+                <span class="c5">CHAGOLER</span> 
+                <span class="c1">DAK</span> 
+                <span class="c2">SOBAI!</span> 
+              <span class="c5">SHUDU SHUDU SOBSOMOY AMAKE</span> 
+                <span class="c1">BHUL</span> 
+                <span class="c2">BUJE!</span> 💖
+            </p>
+            <div class="back-btn" onclick="showRain()">⬅️ Go Back to Goru Rain</div>
+        </div>
+    </div>
+
+    <audio id="bg-music" src="hamba.mp3" loop></audio>
 
     <script>
-        function unfold() {
-            const overlay = document.getElementById('overlay');
-            const container = document.getElementById('video-container');
-            const video = document.getElementById('myVideo');
+        const overlay = document.getElementById('overlay');
+        const rainContainer = document.getElementById('rainContainer');
+        const letterContainer = document.getElementById('letterContainer');
+        const audio = document.getElementById('bg-music');
 
-            // 1. Hide the cover with animation
-            overlay.classList.add('hidden');
-            
-            // 2. Show container
-            container.style.display = 'block';
+        // 1. First Click - Goru rain r music start hobe
+        function startGoruRain() {
+            overlay.style.opacity = '0';
+            setTimeout(() => { overlay.style.display = 'none'; }, 500);
+            rainContainer.style.display = 'block';
+            audio.play().catch(e => console.log("Audio play error:", e));
+        }
 
-            // 3. Attempt to go into Browser Fullscreen Mode
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
-                document.documentElement.webkitRequestFullscreen();
-            }
+        // 2. Letter screen dekhano
+        function showLetter() {
+            rainContainer.style.display = 'none';
+            letterContainer.style.display = 'flex';
+        }
 
-            // 4. Play with audio
-            video.muted = false;
-            video.play();
+        // 3. Rain screen-e back jaoa
+        function showRain() {
+            letterContainer.style.display = 'none';
+            rainContainer.style.display = 'block';
         }
     </script>
-
 </body>
 </html>
